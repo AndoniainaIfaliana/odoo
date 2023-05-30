@@ -1,0 +1,58 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="subject_list_view">
+      <field name="name">Subject list</field>
+      <field name="model">gestion.subject</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="code"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- explicit form view definition -->
+
+    <record model="ir.ui.view" id="subject_form_view">
+      <field name="name">Subject form</field>
+      <field name="model">gestion.subject</field>
+      <field name="arch" type="xml">
+        <form>
+        <sheet>
+            <group>
+              <field name="name"/>
+              <field name="code"/>
+              <field name="department_id"/>
+              <field name="student_id"/>
+              <field name="professor_id"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="subject_action_window">
+      <field name="name">subject window</field>
+      <field name="res_model">gestion.subject</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Top menu item -->
+
+    <menuitem name="Gestion" id="gestion.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Subject" id="gestion_subject_cat" parent="gestion.menu_root"/>
+
+    <!-- actions -->
+
+    <menuitem name="List of subject" id="gestion_subject_list" parent="gestion_subject_cat"
+              action="subject_action_window"/>
+
+  </data>
+</odoo>

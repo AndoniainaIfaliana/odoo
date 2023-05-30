@@ -1,0 +1,55 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="list_matiere">
+      <field name="name">Liste des matieres</field>
+      <field name="model">universiter.matiere</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="id_matiere"/>
+          <field name="nom_matiere"/>
+          <field name="filiere_id"/>
+        </tree>
+      </field>
+    </record>
+    
+    <record model="ir.ui.view" id="formulaire_matiere">
+      <field name="name">Formulaire matiere</field>
+      <field name="model">universiter.matiere</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="id_matiere"/>
+              <field name="nom_matiere"/>
+              <field name="filiere_id"/>
+            </group>
+          </sheet>
+          <notebook>
+            <page string="Liste des enseignants">
+              <field name="enseignant_ids"/>
+            </page>
+          </notebook>
+        </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="action_matiere">
+      <field name="name">Matieres</field>
+      <field name="res_model">universiter.matiere</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Top menu item -->
+    <menuitem name="universiter" id="universiter.menu_root"/>
+
+    <!-- menu categories -->
+    <menuitem name="Matières" id="matiere_cat" parent="universiter.menu_root"/>
+
+    <!-- actions -->
+    <menuitem name="Liste des matières" id="list_des_matieres" parent="matiere_cat"
+              action="action_matiere"/>
+
+  </data>
+</odoo>

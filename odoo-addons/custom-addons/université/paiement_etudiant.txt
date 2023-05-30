@@ -1,0 +1,6 @@
+Num reçu
+Matricule_etudiant
+nom_etudiant
+date_de_paiement
+mode_de_paiement
+montant

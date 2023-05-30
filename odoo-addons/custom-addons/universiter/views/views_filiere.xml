@@ -1,0 +1,59 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="list_filiere">
+      <field name="name">Liste des filieres</field>
+      <field name="model">universiter.filiere</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="id_filiere"/>
+          <field name="nom_filiere"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="formulaire_filiere">
+      <field name="name">Formulaire filiere</field>
+      <field name="model">universiter.filiere</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="id_filiere"/>
+              <field name="nom_filiere"/>
+            </group>
+          </sheet>
+          <notebook>
+            <page string="Liste des matières">
+              <field name="matiere_ids"/>
+            </page>
+            <page string="Liste des étudiants">
+              <field name="etudiant_ids"/>
+            </page>
+            <page string="Liste des enseignants">
+              <field name="enseignant_ids"/>
+            </page>
+          </notebook>
+        </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="action_filiere">
+      <field name="name">Filieres</field>
+      <field name="res_model">universiter.filiere</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Top menu item -->
+    <menuitem name="universiter" id="universiter.menu_root"/>
+
+    <!-- menu categories -->
+    <menuitem name="Filières" id="filiere_cat" parent="universiter.menu_root"/>
+
+    <!-- actions -->
+    <menuitem name="Liste des filières" id="list_des_filieres" parent="filiere_cat"
+              action="action_filiere"/>
+
+  </data>
+</odoo>

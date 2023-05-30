@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_universiter_etudiant,universiter.etudiant,model_universiter_etudiant,base.group_user,1,1,1,1
+access_universiter_enseignant,universiter.enseignant,model_universiter_enseignant,base.group_user,1,1,1,1
+access_universiter_filiere,universiter.filiere,model_universiter_filiere,base.group_user,1,1,1,1
+access_universiter_matiere,universiter.matiere,model_universiter_matiere,base.group_user,1,1,1,1
+access_universiter_classe,universiter.classe,model_universiter_classe,base.group_user,1,1,1,1
+access_universiter_ecolage,universiter.ecolage,model_universiter_ecolage,base.group_user,1,1,1,1

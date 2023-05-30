@@ -1,0 +1,57 @@
+<odoo>
+  <data>
+
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="list_teste">
+      <field name="name">List des testes</field>
+      <field name="model">esearch.teste</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- explicit form view definition -->
+    <record model="ir.ui.view" id="form_teste">
+        <field name="name">Formulaire teste</field>
+        <field name="model">esearch.teste</field>
+        <field name="arch" type="xml">
+            <form on_save="create_index">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                    <!-- <footer>
+                        <button name="create_index" string="Créer dans elasticsearch" type="object" class="btn-primary"/>
+                    </footer> -->
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="action_teste">
+      <field name="name">Index</field>
+      <field name="res_model">esearch.teste</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Top menu item -->
+
+    <menuitem name="esearch" id="esearch.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Teste" id="teste_cat" parent="esearch.menu_root"/>
+
+    <!-- actions -->
+
+    <menuitem name="List des teste" id="liste_teste" parent="teste_cat"
+              action="action_teste"/>
+  </data>
+</odoo>

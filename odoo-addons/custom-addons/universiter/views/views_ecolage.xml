@@ -1,0 +1,77 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="list_ecolage">
+      <field name="name">Liste des ecolages</field>
+      <field name="model">universiter.ecolage</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="etudiant_id"/>
+          <field name="prenom_etudiant"/>
+          <field name="prix_premier_tranche"/>
+          <field name="date_payement_1e_t"/>
+          <field name="status_payement_1e_t"/>
+          <field name="prix_deuxieme_tranche"/>
+          <field name="date_payement_2e_t"/>
+          <field name="status_payement_2e_t"/>
+          <field name="prix_troisieme_tranche"/>
+          <field name="date_payement_3e_t"/>
+          <field name="status_payement_3e_t"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="formulaire_ecolage">
+      <field name="name">Formulaire ecolage</field>
+      <field name="model">universiter.ecolage</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="etudiant_id"/>
+              <field name="prenom_etudiant"/>
+              <field name="prix_premier_tranche"/>
+              <field name="date_payement_1e_t"/>
+              <field name="status_payement_1e_t"/>
+              <field name="prix_deuxieme_tranche"/>
+              <field name="date_payement_2e_t"/>
+              <field name="status_payement_2e_t"/>
+              <field name="prix_troisieme_tranche"/>
+              <field name="date_payement_3e_t"/>
+              <field name="status_payement_3e_t"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="recherche_etudiant">
+      <field name="name">Recherche étudiants</field>
+      <field name="model">universiter.etudiant</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="prenom_etudiant"/>
+        </search>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="action_ecolage">
+      <field name="name">Ecolages</field>
+      <field name="res_model">universiter.ecolage</field>
+      <field name="view_mode">tree,form</field>
+      <field name="context">{ 'default_prix_premier_tranche':350000, 
+                              'default_status_payement_1e_t':'non payé',
+                              'default_prix_deuxieme_tranche':350000,
+                              'default_status_payement_2e_t':'non payé',
+                              'default_prix_troisieme_tranche':200000,
+                              'default_status_payement_3e_t':'non payé'
+                            }</field>
+    </record>
+
+    <!-- actions -->
+    <menuitem name="Ecolages" id="ecolage" parent="etudiant_cat"
+              action="action_ecolage"/>
+
+  </data>
+</odoo>

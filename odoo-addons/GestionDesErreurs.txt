@@ -1,0 +1,2 @@
+redondance du nom de l'indexe dans le vue formulaire
+enlever le boutton importer dans le vue formulaire

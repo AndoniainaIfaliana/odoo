@@ -1,0 +1,91 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="list_etudiant">
+      <field name="name">Liste des etudiants</field>
+      <field name="model">universiter.etudiant</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="matricule_etudiant"/>
+          <field name="nom_etudiant"/>
+          <field name="prenom_etudiant"/>
+          <field name="sexe"/>
+          <field name="date_naissance"/>
+          <field name="lieu_naissance"/>
+          <field name="date_inscription"/>
+          <field name="adresse"/>
+          <field name="mail"/>
+          <field name="num"/>
+          <field name="niveaux"/>
+          <field name="filiere_id"/>
+          <field name="classe_id"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="formulaire_etudiant">
+      <field name="name">Formulaire etudiant</field>
+      <field name="model">universiter.etudiant</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="matricule_etudiant"/>
+              <field name="nom_etudiant"/>
+              <field name="prenom_etudiant"/>
+              <field name="sexe"/>
+              <field name="date_naissance"/>
+              <field name="lieu_naissance"/>
+              <field name="date_inscription"/>
+              <field name="adresse"/>
+              <field name="mail"/>
+              <field name="num"/>
+              <field name="niveaux"/>
+              <field name="filiere_id"/>
+              <field name="classe_id"/>
+            </group>
+          </sheet>
+          <!-- <notebook>
+            <page string="Liste des matières">
+              <field name="matiere_ids"/>
+            </page>
+          </notebook> -->
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="search_etudiant">
+      <field name="name">Recherche étudiant</field>
+      <field name="model">universiter.etudiant</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="prenom_etudiant"/>
+          <searchpanel>
+              <field name="sexe"/>
+              <field name="filiere_id"/>
+              <field name="niveaux"/>
+          </searchpanel>
+        </search>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="action_etudiant">
+      <field name="name">Etudiants</field>
+      <field name="res_model">universiter.etudiant</field>
+      <field name="view_mode">tree,form</field>
+      <field name="context">{ 'default_sexe':'masculin'}</field>
+    </record>
+
+    <!-- Top menu item -->
+    <menuitem name="universiter" id="universiter.menu_root"/>
+
+    <!-- menu categories -->
+    <menuitem name="Etudiants" id="etudiant_cat" parent="universiter.menu_root"/>
+
+    <!-- actions -->
+    <menuitem name="Liste des étudiants" id="list_des_etudiants" parent="etudiant_cat"
+              action="action_etudiant"/>
+
+  </data>
+</odoo>

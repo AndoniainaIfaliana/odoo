@@ -1,0 +1,77 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="classroom_list_view">
+      <field name="name">Classroom list</field>
+      <field name="model">gestion.classroom</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="code"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- explicit form view definition -->
+
+    <record model="ir.ui.view" id="classroom_form_view">
+      <field name="name">Classroom form</field>
+      <field name="model">gestion.classroom</field>
+      <field name="arch" type="xml">
+        <form>
+        <sheet>
+            <group>
+              <group>
+                <field name="name"/>
+                <field name="code"/>
+              </group>
+              <group>
+                <field name="num_stu"/>
+                <field name="num_prof"/>
+              </group>
+            </group>
+            <notebook>
+              <page string="List of student">
+                <field name="student_ids"/>
+              </page>
+              <page string="List of professor">
+                <field name="professor_ids"/>
+              </page>
+            </notebook>
+          </sheet>
+          <sheet>
+            <div class="oe_chatter">
+              <field name="message_follower_ids" widget="mail_followers"></field>
+              <field name="message_ids" widget="mail_thread"></field>
+            </div>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="classroom_action_window">
+      <field name="name">classroom window</field>
+      <field name="res_model">gestion.classroom</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Top menu item -->
+
+    <menuitem name="Gestion" id="gestion.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Classroom" id="gestion_classroom_cat" parent="gestion.menu_root"/>
+
+    <!-- actions -->
+
+    <menuitem name="List of classroom" id="gestion_classroom_list" parent="gestion_classroom_cat"
+              action="classroom_action_window"/>
+    <menuitem name="List of classroom1" id="gestion_classroom_list1" parent="gestion_classroom_cat"
+              action="classroom_action_window"/>
+
+  </data>
+</odoo>

@@ -1,0 +1,88 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="list_enseignant">
+      <field name="name">Liste des enseignants</field>
+      <field name="model">universiter.enseignant</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="matricule_enseignant"/>
+          <field name="nom_enseignant"/>
+          <field name="prenom_enseignant"/>
+          <field name="sexe"/>
+          <field name="date_naissance_enseignant"/>
+          <field name="lieu_naissance_enseignant"/>
+          <field name="date_debut"/>
+          <field name="adresse_enseignant"/>
+          <field name="mail_enseignant"/>
+          <field name="num_enseignant"/>
+          <field name="filiere_id"/>
+          <field name="matiere_id"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="formulaire_enseignant">
+      <field name="name">Formulaire enseignant</field>
+      <field name="model">universiter.enseignant</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="matricule_enseignant"/>
+              <field name="nom_enseignant"/>
+              <field name="prenom_enseignant"/>
+              <field name="sexe"/>
+              <field name="date_naissance_enseignant"/>
+              <field name="lieu_naissance_enseignant"/>
+              <field name="date_debut"/>
+              <field name="adresse_enseignant"/>
+              <field name="mail_enseignant"/>
+              <field name="num_enseignant"/>
+              <field name="filiere_id"/>
+              <field name="matiere_id"/>
+            </group>
+            <notebook>
+              <page string="Classes enseignés ">
+                <field name="enseignant_ids"/>
+              </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="recherche_enseignant">
+      <field name="name">Recherche enseignant</field>
+      <field name="model">universiter.enseignant</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="prenom_enseignant"/>
+          <searchpanel>
+              <field name="sexe"/>
+              <field name="filiere_id"/>
+          </searchpanel>
+        </search>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="action_enseignant">
+      <field name="name">Enseignant</field>
+      <field name="res_model">universiter.enseignant</field>
+      <field name="view_mode">tree,form</field>
+      <field name="context">{'default_sexe':'masculin'}</field>
+    </record>
+
+    <!-- Top menu item -->
+    <menuitem name="universiter" id="universiter.menu_root"/>
+
+    <!-- menu categories -->
+    <menuitem name="Enseignants" id="enseignant_cat" parent="universiter.menu_root"/>
+
+    <!-- actions -->
+    <menuitem name="Liste des enseignants" id="list_des_enseignants" parent="enseignant_cat" 
+              action="action_enseignant"/>
+
+  </data>
+</odoo>

@@ -1,0 +1,73 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="department_list_view">
+      <field name="name">Department list</field>
+      <field name="model">gestion.department</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="code"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- explicit form view definition -->
+
+    <record model="ir.ui.view" id="department_form_view">
+      <field name="name">Department form</field>
+      <field name="model">gestion.department</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <group>
+                <field name="name"/>
+                <field name="code"/>
+              </group>
+              <group>
+                <field name="num_sub"/>
+                <field name="num_stu"/>
+                <field name="num_prof"/>
+              </group>
+              </group>
+            <notebook>
+                <page string="List of subject">
+                  <field name="subject_ids"/>
+                </page>
+                <page string="List of student">
+                  <field name="student_ids"/>
+                </page>
+                <page string="List of professor">
+                  <field name="professor_ids"/>
+                </page>
+              </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="department_action_window">
+      <field name="name">department window</field>
+      <field name="res_model">gestion.department</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Top menu item -->
+
+    <menuitem name="Gestion" id="gestion.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Department" id="gestion_department_cat" parent="gestion.menu_root"/>
+
+    <!-- actions -->
+
+    <menuitem name="List of departments" id="gestion_department_list" parent="gestion_department_cat"
+              action="department_action_window"/>
+
+  </data>
+</odoo>

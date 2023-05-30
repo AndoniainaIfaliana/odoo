@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_universite_etudiants,access.universite.etudiants,model_universite_etudiants,base.group_user,1,1,1,1
+access_universite_prof,access.universite.prof,model_universite_prof,base.group_user,1,1,1,1
+access_universite_filieres,access.universite.filieres,model_universite_filieres,base.group_user,1,1,1,1
+access_universite_matieres,access.universite.matieres,model_universite_matieres,base.group_user,1,1,1,1
+access_universite_classes,access.universite.classes,model_universite_classes,base.group_user,1,1,1,1
+access_universite_ecolages,access.universite.ecolages,model_universite_ecolages,base.group_user,1,1,1,1

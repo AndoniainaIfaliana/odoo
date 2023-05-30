@@ -1,0 +1,56 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="list_classe">
+      <field name="name">Liste des classes</field>
+      <field name="model">universiter.classe</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="code_classe"/>
+          <field name="nom_classe"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="formulaire_classe">
+      <field name="name">Formulaire classe</field>
+      <field name="model">universiter.classe</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="code_classe"/>
+              <field name="nom_classe"/>
+            </group>
+          </sheet>
+          <notebook>
+              <page string="Liste des etudiants">
+                <field name="etudiant_ids"/>
+              </page>
+              <page string="Liste des enseignants">
+                <field name="enseignant_ids"/>
+              </page>
+            </notebook>
+        </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="action_classe">
+      <field name="name">Classes</field>
+      <field name="res_model">universiter.classe</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Top menu item -->
+    <menuitem name="universiter" id="universiter.menu_root"/>
+
+    <!-- menu categories -->
+    <menuitem name="Classes" id="classe_cat" parent="universiter.menu_root"/>
+
+    <!-- actions -->
+    <menuitem name="Liste des classes" id="list_des_classe" parent="classe_cat"
+              action="action_classe"/>
+
+  </data>
+</odoo>

@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_gestion_universités_gestion_universités,gestion_universités.gestion_universités,model_gestion_universités_gestion_universités,base.group_user,1,1,1,1

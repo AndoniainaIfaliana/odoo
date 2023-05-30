@@ -1,0 +1,56 @@
+<odoo>
+  <data>
+
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="list_index">
+      <field name="name">List des index</field>
+      <field name="model">esearch.index</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="nom_index"/>
+          <field name="description_index"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- explicit form view definition -->
+    <record model="ir.ui.view" id="form_index">
+        <field name="name">Formulaire index</field>
+        <field name="model">esearch.index</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="nom_index"/>
+                        <field name="description_index"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="action_index">
+      <field name="name">Index</field>
+      <field name="res_model">esearch.index</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Top menu item -->
+
+    <menuitem name="esearch" id="esearch.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Index" id="index_cat" parent="esearch.menu_root"/>
+
+    <!-- actions -->
+
+    <menuitem name="List des index" id="liste_index" parent="index_cat"
+              action="action_index"/>
+  </data>
+</odoo>

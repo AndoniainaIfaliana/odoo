@@ -1,0 +1,73 @@
+<odoo>
+  <data>
+
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="list_filiere">
+      <field name="name">Liste des filières</field>
+      <field name="model">universite.filieres</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="nom_filiere"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- explicit form view definition -->
+
+    <record model="ir.ui.view" id="formulaire_filiere">
+      <field name="name">Formulaire filière</field>
+      <field name="model">universite.filieres</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="code_filiere"/>
+              <field name="nom_filiere"/>
+            </group>
+          </sheet>
+          <notebook>
+                <page string="Liste des matières">
+                  <field name="matiere_ids"/>
+                </page>
+                <page string="Liste des enseignants">
+                  <field name="enseignant_ids"/>
+                </page>
+          </notebook>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="search_filiere">
+      <field name="name">Recherche filières</field>
+      <field name="model">universite.filieres</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="nom_filiere"/>
+        </search>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="action_filière">
+      <field name="name">Filières</field>
+      <field name="res_model">universite.filieres</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Top menu item -->
+
+    <menuitem name="Université" id="université.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Filières" id="filière_cat" parent="université.menu_root"/>
+
+    <!-- actions -->
+
+    <menuitem name="Liste des filières" id="liste_filière" parent="filière_cat"
+              action="action_filière"/>
+
+  </data>
+</odoo>

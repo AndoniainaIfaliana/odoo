@@ -1,0 +1,77 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+
+        <record model="ir.ui.view" id="bepense_list">
+        <field name="name">List depense</field>
+        <field name="model">bd.depenses</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="id_depense"/>
+                <field name="cout_unitaire"/>
+                <field name="nbr"/>
+                <field name="date"/>
+                <field name="commentaire"/>
+            </tree>
+        </field>
+        </record>
+
+        <!-- explicit form view definition -->
+
+        <record model="ir.ui.view" id=" depense_form">
+        <field name="name">Formulaire depenses</field>
+        <field name="model">bd.depenses</field>
+        <field name="arch" type="xml">
+            <form>
+              <sheet>
+                <div class='oe_button_box' name='button_box'>
+                  <button string="Send mail" icon="fa-envelope" class="oe_stat_button"></button>
+                  <button class="oe_stat_button" name="toggle_active" type="object" icon="fa-archive">
+                    <field name="active" widget="boolean_button"></field>
+                  </button>
+                </div>
+                <group>
+                  <group>
+                    <field name="id_depense"/>
+                    <field name="cout_unitaire"/>
+                    <field name="nbr"/>
+                    <field name="date"/>
+                    <field name="commentaire"/>
+                    <field name="items_id"/>
+                  </group>
+                  <group>
+                    <field name="num_ra"/>
+                  </group>
+                </group>
+              </sheet>
+              <notebook>
+                <page string="List des responsables achats">
+                  <field name="respachat_ids"/>
+                </page>
+              </notebook>
+            </form>
+        </field>
+        </record>
+
+        <!-- actions opening views on models -->
+
+        <record model="ir.actions.act_window" id="bd_depenses_action_window">
+            <field name="name">Depenses window</field>
+            <field name="res_model">bd.depenses</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Top menu item -->
+
+        <menuitem name="bd" id="bd.menu_root"/>
+
+        <!-- menu categories -->
+
+        <menuitem name="Depenses" id="bd_depenses_cat" parent="bd.menu_root"/>
+
+        <!-- actions -->
+
+        <menuitem name="List depenses" id="bd_depenses_list" parent="bd_depenses_cat"
+                action="bd_depenses_action_window"/>
+    </data>
+</odoo>

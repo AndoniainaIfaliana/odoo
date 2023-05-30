@@ -1,0 +1,71 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+
+        <record model="ir.ui.view" id="items_list">
+        <field name="name">List items</field>
+        <field name="model">bd.items</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="id_item"/>
+                <field name="item"/>
+                <field name="commentaire"/>
+            </tree>
+        </field>
+        </record>
+
+        <!-- explicit form view definition -->
+
+        <record model="ir.ui.view" id="items_form">
+        <field name="name">Formulaire items</field>
+        <field name="model">bd.items</field>
+        <field name="arch" type="xml">
+            <form>
+              <header> 
+                <button name="next_level" type="object" class="oe_highLight" string="Next level"></button>
+                <button name="prev_level" type="object" class="oe_highLight" string="Previous level"></button>
+              <field name="state" widget="statusbar" statusbar_visible="l1,l2,l3,finish"/> 
+            </header>
+              <sheet>
+                <group>
+                  <group>
+                    <field name="id_item"/>
+                    <field name="item"/> 
+                    <field name="commentaire"/>
+                  </group>
+                  <group>
+                    <field name="num_dep"/>
+                  </group>
+                </group>
+              </sheet>
+              <notebook>
+                <page string="List des depenses">
+                  <field name="depenses_ids"/>
+                </page>
+              </notebook>
+            </form>
+        </field>
+        </record>
+
+        <!-- actions opening views on models -->
+
+        <record model="ir.actions.act_window" id="bd_items_action_window">
+            <field name="name">Items window</field>
+            <field name="res_model">bd.items</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Top menu item -->
+
+        <menuitem name="bd" id="bd.menu_root"/>
+
+        <!-- menu categories -->
+
+        <menuitem name="Items" id="bd_items_cat" parent="bd.menu_root"/>
+
+        <!-- actions -->
+
+        <menuitem name="List items" id="bd_items_list" parent="bd_items_cat"
+                action="bd_items_action_window"/>
+    </data>
+</odoo>

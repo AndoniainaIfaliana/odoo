@@ -1,0 +1,55 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="teste_list_view">
+      <field name="name">Teste list</field>
+      <field name="model">gestion.teste</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="code" widget="badge"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- explicit form view definition -->
+
+    <record model="ir.ui.view" id="teste_form_view">
+      <field name="name">Teste form</field>
+      <field name="model">gestion.teste</field>
+      <field name="arch" type="xml">
+        <form>
+        <sheet>
+            <group>
+              <field name="name"/>
+              <field name="code"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="teste_action_window">
+      <field name="name">teste window</field>
+      <field name="res_model">gestion.teste</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Top menu item -->
+
+    <menuitem name="Gestion" id="gestion.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Teste" id="gestion_teste_cat" parent="gestion.menu_root"/>
+
+    <!-- actions -->
+
+    <menuitem name="Teste" id="gestion_teste_list" parent="gestion_teste_cat"
+              action="teste_action_window"/>
+
+  </data>
+</odoo>

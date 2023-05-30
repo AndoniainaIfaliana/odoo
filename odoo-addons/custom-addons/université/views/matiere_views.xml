@@ -1,0 +1,56 @@
+<odoo>
+  <data>
+
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="list_matiere">
+      <field name="name">Liste des matières</field>
+      <field name="model">universite.matieres</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="nom_matiere"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- explicit form view definition -->
+
+    <record model="ir.ui.view" id="formulaire_matiere">
+      <field name="name">Formulaire matière</field>
+      <field name="model">universite.matieres</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="code_matiere"/>
+              <field name="nom_matiere"/>
+              <field name="prof_id"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="action_matière">
+      <field name="name">Matières</field>
+      <field name="res_model">universite.matieres</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Top menu item -->
+
+    <menuitem name="Université" id="université.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Matières" id="matière_cat" parent="université.menu_root"/>
+
+    <!-- actions -->
+
+    <menuitem name="Liste des matières" id="liste_matière" parent="matière_cat"
+              action="action_matière"/>
+
+  </data>
+</odoo>

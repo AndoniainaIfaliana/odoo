@@ -1,0 +1,54 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+
+        <record model="ir.ui.view" id="respachat_list">
+        <field name="name">List responsable achat</field>
+        <field name="model">bd.respachat</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="nom_resp"/>
+            </tree>
+        </field>
+        </record>
+
+        <!-- explicit form view definition -->
+
+        <record model="ir.ui.view" id="respachat_form">
+        <field name="name">Formulaire responsable achat</field>
+        <field name="model">bd.respachat</field>
+        <field name="arch" type="xml">
+            <form>
+              <sheet>
+                <group>
+                    <field name="nom_resp"/>
+                    <field name="responsables_id"/>
+                    <field name="depenses_id"/>
+                </group>
+              </sheet>
+            </form>
+        </field>
+        </record>
+
+        <!-- actions opening views on models -->
+
+        <record model="ir.actions.act_window" id="bd_respachat_action_window">
+            <field name="name">Responsables_achat window</field>
+            <field name="res_model">bd.respachat</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Top menu item -->
+
+        <menuitem name="bd" id="bd.menu_root"/>
+
+        <!-- menu categories -->
+
+        <menuitem name="Responsables achat" id="bd_respachat_cat" parent="bd.menu_root"/>
+
+        <!-- actions -->
+
+        <menuitem name="List responsables achat" id="bd_respachat_list" parent="bd_respachat_cat"
+                action="bd_respachat_action_window"/>
+    </data>
+</odoo>

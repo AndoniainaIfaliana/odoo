@@ -1,0 +1,72 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+
+        <record model="ir.ui.view" id="responsable_list">
+        <field name="name">List responsable</field>
+        <field name="model">bd.responsables</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="id_responsable"/>
+                <field name="nom"/>
+                <field name="commentaires"/>
+            </tree>
+        </field>
+        </record>
+
+        <!-- explicit form view definition -->
+
+        <record model="ir.ui.view" id="responsables_form">
+        <field name="name">Formulaire responsable</field>
+        <field name="model">bd.responsables</field>
+        <field name="arch" type="xml">
+            <form>
+              <sheet>
+                <group>
+                    <group>
+                        <field name="id_responsable"/>
+                        <field name="nom"/>
+                        <field name="commentaires"/>
+                    </group>
+                    <group>
+                        <field name="num_ra"/>
+                    </group>
+                </group>
+              </sheet>
+              <notebook>
+                    <page string="List des responsables achats">
+                    <field name="respachat_ids"/>
+                    </page>
+              </notebook>
+              <sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"></field>
+                    <field name="message_ids" widget="mail_thread"></field>
+                </div>
+              </sheet>
+            </form>
+        </field>
+        </record>
+
+        <!-- actions opening views on models -->
+
+        <record model="ir.actions.act_window" id="bd_responsables_action_window">
+            <field name="name">Responsables window</field>
+            <field name="res_model">bd.responsables</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Top menu item -->
+
+        <menuitem name="bd" id="bd.menu_root"/>
+
+        <!-- menu categories -->
+
+        <menuitem name="Responsables" id="bd_responsables_cat" parent="bd.menu_root"/>
+
+        <!-- actions -->
+
+        <menuitem name="List responsables" id="bd_responsables_list" parent="bd_responsables_cat"
+                action="bd_responsables_action_window"/>
+    </data>
+</odoo>

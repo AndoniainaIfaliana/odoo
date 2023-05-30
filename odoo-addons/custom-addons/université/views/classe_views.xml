@@ -1,0 +1,70 @@
+<odoo>
+  <data>
+
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="list_classe">
+      <field name="name">Liste des classes</field>
+      <field name="model">universite.classes</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="nom_classe"/>
+          <field name="filiere_id"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- explicit form view definition -->
+
+    <record model="ir.ui.view" id="formulaire_classe">
+      <field name="name">Formulaire classe</field>
+      <field name="model">universite.classes</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="code_classe"/>
+              <field name="nom_classe"/>
+              <field name="filiere_id"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- explicit search definition -->
+
+    <record model="ir.ui.view" id="view_universite_classes_search">
+            <field name="name">universite.classes.search</field>
+            <field name="model">universite.classes</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="nom_classe" string="Nom de la classe"/>
+                </search>
+            </field>
+        </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="action_classe">
+      <field name="name">Classes</field>
+      <field name="res_model">universite.classes</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Top menu item -->
+
+    <menuitem name="Université" id="université.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Classes" id="classe_cat" parent="université.menu_root"/>
+
+    <!-- actions -->
+
+    <menuitem name="Liste des classes" id="liste_classe" parent="classe_cat"
+              action="action_classe"/>
+
+  </data>
+</odoo>

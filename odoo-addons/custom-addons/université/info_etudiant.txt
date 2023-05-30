@@ -1,0 +1,14 @@
+Matricule
+date d'inscription
+nom
+prenom
+sexe
+date de naissance
+lieu de naissance
+adresse
+niveau(lien)
+Mail
+num
+filière(lien)
+prof(lien)
+matière(lien)
